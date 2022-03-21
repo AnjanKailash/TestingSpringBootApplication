@@ -4,6 +4,7 @@ package net.javaguides.springboottesting.reposirtory;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -97,6 +98,41 @@ public class EmployeeRepositoryTests {
 		//then - verify the result
 		assertThat(savedEmployee).isNotNull();
 
+	}
+	
+	@DisplayName("JUnit test for update employee operation")
+	@Test
+	public void givenEmploeeObject_whenUpdateEmployee_thenReturnUpdatedEmployee() {
+
+		//given - precondition or setup
+		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		employeeRepository.save(employee);
+
+		//when - action or behavior that we are going to test
+		Employee savedEmployee = employeeRepository.getById(employee.getId());
+		savedEmployee.setEmail("ram@gmail.com");
+		savedEmployee.setFirstName("Ram");
+		Employee updatedEmployee = employeeRepository.save(savedEmployee);
+		
+		//then - verify the result
+		assertThat(updatedEmployee.getEmail()).isEqualTo("ram@gmail.com");
+		assertThat(updatedEmployee.getFirstName()).isEqualTo("Ram");
+	}
+	
+	@DisplayName("JUnit test for delete employee operation")
+	@Test
+	public void givenEmployeeObject_whenDelete_thenRemoveEmployee() {
+
+		//given - precondition or setup
+		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		employeeRepository.save(employee);
+		
+		//when - action or behavior that we are going to test
+		employeeRepository.delete(employee);
+		Optional<Employee> employeeOptional = employeeRepository.findById(employee.getId());
+		
+		//then - verify the result
+		assertThat(employeeOptional).isEmpty();
 	}
 }
 
