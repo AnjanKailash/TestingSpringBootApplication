@@ -171,9 +171,9 @@ public class EmployeeRepositoryTests {
 		assertThat(savedEmployee).isNotNull();
 	}
 	
-	@DisplayName("JUnit test for custom query using native query with index Parameters")
+	@DisplayName("JUnit test for custom query using native query with named Parameters")
 	@Test
-	public void givenFirstNameAndLastName_whenFindByNativeQuery_thenEmployeeObject() {
+	public void givenFirstNameAndLastName_whenFindByNativeQueryNamedParams_thenEmployeeObject() {
 
 		//given - precondition or setup
 		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
@@ -183,7 +183,7 @@ public class EmployeeRepositoryTests {
 		String lastName = "Fadatare";
 		
 		//when - action or behavior that we are going to test
-		Employee savedEmployee = employeeRepository.findByNativeQuery(firstName, lastName);
+		Employee savedEmployee = employeeRepository.findByNativeQueryNamedParams(firstName, lastName);
 		
 		//then - verify the result
 		assertThat(savedEmployee).isNotNull();
