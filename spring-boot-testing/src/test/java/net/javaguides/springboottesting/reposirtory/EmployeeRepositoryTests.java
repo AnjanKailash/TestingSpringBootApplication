@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,13 @@ public class EmployeeRepositoryTests {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
+	private Employee employee;
+	
+	@BeforeEach
+	public void setup() {
+		employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+	}
+	
 	//JUnit test for save employee operation
 	@DisplayName("JUnit test for save employee operation")
 	@Test
@@ -31,7 +39,7 @@ public class EmployeeRepositoryTests {
 //				.lastName("Ramesh")
 //				.email("ramesh@gmail.com")
 //				.build();
-		Employee employee = new Employee("Ramesh", "Ramesh", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Ramesh", "ramesh@gmail.com");
 		
 		//when - action or behaviour that we are going to test
 		Employee savedEmployee = employeeRepository.save(employee);		
@@ -73,7 +81,7 @@ public class EmployeeRepositoryTests {
 	public void givenEmployeeObject_whenFindById_thenReturnEmployeeObject() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Ramesh", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Ramesh", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 		
 		//when - action or behavior that we are going to test
@@ -89,7 +97,7 @@ public class EmployeeRepositoryTests {
 	public void givenEmployeeObject_whenFindByEmail_thenReturnEmployeeObject() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Ramesh", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Ramesh", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 		
 		//when - action or behavior that we are going to test
@@ -105,7 +113,7 @@ public class EmployeeRepositoryTests {
 	public void givenEmploeeObject_whenUpdateEmployee_thenReturnUpdatedEmployee() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 
 		//when - action or behavior that we are going to test
@@ -124,7 +132,7 @@ public class EmployeeRepositoryTests {
 	public void givenEmployeeObject_whenDelete_thenRemoveEmployee() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 		
 		//when - action or behavior that we are going to test
@@ -140,7 +148,7 @@ public class EmployeeRepositoryTests {
 	public void givenFirstNameAndLastName_whenFindByJPQL_thenEmployeeObject() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 
 		String firstName = "Ramesh";
@@ -158,7 +166,7 @@ public class EmployeeRepositoryTests {
 	public void givenFirstNameAndLastName_whenFindByJPQLNamedParams_thenEmployeeObject() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 
 		String firstName = "Ramesh";
@@ -176,7 +184,7 @@ public class EmployeeRepositoryTests {
 	public void givenFirstNameAndLastName_whenFindByNativeQueryNamedParams_thenEmployeeObject() {
 
 		//given - precondition or setup
-		Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
+		//Employee employee = new Employee("Ramesh", "Fadatare", "ramesh@gmail.com");
 		employeeRepository.save(employee);
 
 		String firstName = "Ramesh";
